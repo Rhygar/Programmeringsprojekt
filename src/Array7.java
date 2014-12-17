@@ -5,4 +5,7 @@ public class Array7 {
 	public Array7(int[] array){
 		this.array = array;
 	}
+	public static void main(String [] args) {
+		System.out.println("David was here, trying");
+	}
 }
