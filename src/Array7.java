@@ -1,4 +1,8 @@
 
 public class Array7 {
-public int array = 0;
+	private int[] array;
+
+	public Array7(int[] array){
+		this.array = array;
+	}
 }
