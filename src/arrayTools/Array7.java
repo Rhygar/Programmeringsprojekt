@@ -3,7 +3,6 @@ package arrayTools;
 /**
  * Class which stores and manipulates 
  * an integer array the length of 7 
- *
  */
 public class Array7 {
 	private int[] array;
@@ -47,5 +46,14 @@ public class Array7 {
 	 */
 	public int getElement(int pos){
 		return array[pos];
+	}
+	
+	/**
+	 * Returns the whole array
+	 * 
+	 * @return The array
+	 */
+	public int[] getArray(){
+		return array;
 	}
 }
