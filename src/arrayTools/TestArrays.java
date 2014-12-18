@@ -273,6 +273,7 @@ public class TestArrays extends JPanel {
 		testArray.setRow(1, testArr7);
 		test.set7x7Array(testArray.getArray());
 		test.setVerticalArray(testArr7.getArray());
+//		test.setVerticalArray(testArray.getcol(2).getArray());
 		
 		
 	}
