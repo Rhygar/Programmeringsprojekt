@@ -104,6 +104,19 @@ public class TestArrays extends JPanel {
 	}
 	
 	/**
+	 * Sets values in a 7x7 JLabel
+	 * @param array 7x7 int[][] with values
+	 */
+	public void set7x7Array(int[][] array) {
+		for(int i = 0; i < array.length; i++) {
+			for(int j = 0; j < array[i].length; j++) {
+				String value = array[i][j] + "";
+				labels[i][j].setText(value);
+			}
+		}
+	}	
+	
+	/**
 	 * Changing specified row in the 7x7 array
 	 * @param array array with 7 elements
 	 * @param row this row will be modified. Start from 0 
@@ -251,6 +264,17 @@ public class TestArrays extends JPanel {
 		
 		frame.pack();
 		frame.setVisible(true);
+		Array7x7 testArray = new Array7x7();
+		Array7 testArr7 = new Array7();
+		testArr7.setElement(3, 6);
+		testArr7.setElement(5, 9);
+		testArray.setElement(1, 1, 5);
+		testArray.setCol(2, testArr7);
+		testArray.setRow(1, testArr7);
+		test.set7x7Array(testArray.getArray());
+		test.setVerticalArray(testArr7.getArray());
+		
+		
 	}
 	 
 }
