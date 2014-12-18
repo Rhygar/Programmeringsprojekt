@@ -21,7 +21,7 @@ public class Array7 {
 	 */
 	public Array7(int[] array) throws Exception{
 		if(array.length == 7){
-			this.array = array;
+			this.array = array.clone();
 		}else{
 			throw new Exception("Incorrect array size");
 		}

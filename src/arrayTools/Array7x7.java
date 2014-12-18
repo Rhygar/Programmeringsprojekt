@@ -25,7 +25,9 @@ public class Array7x7 {
 	 */
 	public Array7x7(int[][] array) throws Exception {
 		if (array.length == 7 && array[0].length == 7) {
-			this.array = array;
+			for(int i = 0; i < array.length; i++){
+				this.array[i] = array[i].clone();
+			}
 		} else {
 			throw new Exception("Incorrect array size");
 		}
