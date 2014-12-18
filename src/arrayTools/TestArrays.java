@@ -1,6 +1,9 @@
 package arrayTools;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 /**
@@ -14,6 +17,12 @@ public class TestArrays extends JPanel {
 	JLabel[][] labels = new JLabel[7][7];		//Jlabel components for the 7x7 array. Goes in center
 	JLabel[] labelsW = new JLabel[7];			//JLabel components for the array[7]. Goes in west
 	JLabel[] labelsS = new JLabel[7];			//JLabel components for the array[7]. Goes in south
+	JButton btnReadRow = new JButton("Läs rad");
+	JButton btnWriteRow = new JButton("Skriv rad");
+	JButton btnReadCol = new JButton("Läs kol");
+	JButton btnWriteCol = new JButton("Skriv kol");
+	JTextField tfRowNbr = new JTextField("Input rad nr");
+	JTextField tfColNbr = new JTextField("Input kol nr");
 	Dimension block = new Dimension(40,40);		//size for all the JLabel components 
 	private Font font = new Font( "SansSerif", Font.BOLD, 30 );
 	private int nbr = 4;						//just a test for using varibels to change the text in labels
@@ -56,6 +65,13 @@ public class TestArrays extends JPanel {
 		//panel east, where the buttons are
 		JPanel east = new JPanel();
 		east.setPreferredSize(new Dimension(90, 400));
+		east.add(btnReadRow);
+		east.add(btnWriteRow);
+		east.add(tfRowNbr);
+		east.add(btnReadCol);
+		east.add(btnWriteCol);
+		east.add(tfColNbr);
+		
 		
 		//panel center, where the 7x7 array is
 		JPanel center = new JPanel();
@@ -79,6 +95,11 @@ public class TestArrays extends JPanel {
 		add(center, BorderLayout.CENTER);
 		add(south, BorderLayout.SOUTH);
 		add(east, BorderLayout.EAST);
+		btnReadRow.addActionListener(new AL());
+		btnReadCol.addActionListener(new AL());
+		btnWriteRow.addActionListener(new AL());
+		btnWriteCol.addActionListener(new AL());
+		
 		labels[0][0].setText(nbr + "");
 	}
 	
@@ -103,6 +124,116 @@ public class TestArrays extends JPanel {
 			labels[row][col].setText(array[row] + "");
 		}
 	}
+	
+	public int[] getRow(int row) {
+		int[] array = new int[7];
+		for(int col = 0; col < labels[row].length; col++) {
+			array[col] = Integer.parseInt(labels[row][col].getText());
+		}
+		return array;
+	}
+	
+	public int[] getCol(int col) {
+		int[] array = new int[7];
+		for(int row = 0; row < labels.length; row++) {
+			array[row] = Integer.parseInt(labels[row][col].getText());
+		}
+		return array;
+	}
+	
+	/**
+	 * Changing the horizontal array
+	 * @param arr 7 element array
+	 */
+	public void setHorizontalArray(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			String text = arr[i] + "";
+			labelsS[i].setText(text);
+		}
+	}
+	
+	/**
+	 * Changing the vertical array
+	 * @param arr 7 element array
+	 */
+	public void setVerticalArray(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			String text = arr[i] + "";
+			labelsW[i].setText(text);
+		}
+	}
+	
+	/**
+	 * Returns the horizontal array
+	 * @return array 7 int array
+	 */
+	public int[] getHorizontalArray() {
+		int[] array = new int[7];
+		for (int i = 0; i < labelsS.length; i++) {
+			array[i] = Integer.parseInt(labelsS[i].getText());
+		}
+		return array; 
+	}
+	
+	/**
+	 * Returns the vertical array
+	 * @return array 7 int array
+	 */
+	public int[] getVerticalArray() {
+		int[] array = new int[7];
+		for (int i = 0; i < labelsW.length; i++) {
+			array[i] = Integer.parseInt(labelsW[i].getText());
+		}
+		return array;
+	}
+	
+	
+	public void readRow() {
+		int[] array;
+		array = getRow(Integer.parseInt(tfRowNbr.getText()));
+		setHorizontalArray(array);
+	}
+	
+	public void writeRow() {
+		int[] array;
+		int row;
+		array = getHorizontalArray();
+		row = Integer.parseInt(tfRowNbr.getText());
+		changeRow(array, row);
+	}
+	
+	public void readCol() {
+		int[] array;
+		array = getCol(Integer.parseInt(tfColNbr.getText()));
+		setVerticalArray(array);
+	}
+	
+	public void writeCol() {
+		int[] array;
+		int col;
+		array = getVerticalArray();
+		col = Integer.parseInt(tfRowNbr.getText());
+		changeCol(array, col);
+	}
+	
+	
+	private class AL implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			if (btnReadRow == e.getSource()) {
+				readRow();
+			} else if (btnWriteRow == e.getSource()) {
+				writeRow();
+			} else if (btnReadCol == e.getSource()) {
+				readCol();
+			} else if (btnWriteCol == e.getSource()) {
+				writeCol();
+			}
+			
+		}
+		
+	}
+	
 	
 	
 	//main method to try and see the panel
