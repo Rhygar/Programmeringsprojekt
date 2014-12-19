@@ -251,7 +251,7 @@ public class TestArrays extends JPanel {
 	
 	//main method to try and see the panel
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		JFrame frame = new JFrame("Test Arrays");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -273,7 +273,7 @@ public class TestArrays extends JPanel {
 		testArray.setRow(1, testArr7);
 		test.set7x7Array(testArray.getArray());
 		test.setVerticalArray(testArr7.getArray());
-//		test.setVerticalArray(testArray.getcol(2).getArray());
+		test.setVerticalArray(testArray.getcol(2).getArray());
 		
 		
 	}
