@@ -1,5 +1,7 @@
 package arrayTools;
 
+import com.sun.javafx.collections.SetAdapterChange;
+
 /**
  * Class which stores and manipulates a 2-D integer array that is 7 by 7
  */
@@ -110,7 +112,7 @@ public class Array7x7 {
 	 * @throws Exception
 	 *             ???
 	 */
-	public Array7 getcol(int col) throws Exception {
+	public Array7 getCol(int col) throws Exception {
 		int[] array = new int[7];
 
 		for (int i = 0; i < 7; i++) {
@@ -143,41 +145,32 @@ public class Array7x7 {
 	 */
 	public Array7 shiftContent(Array7 colReplace, int direction)
 			throws Exception {
-		int[] array = new int[7];
+		Array7 array = null;
 
 		if (direction == LEFT) {
-			// Stores the leftmost column in an array
-			for (int i = 0; i < 7; i++) {
-				array[i] = this.array[i][0];
-			}
+			// Stores the leftmost column in an Array7
+			array = getCol(0);			
 
 			// Shifts the content to the left
-			for (int row = 0; row < 7; row++) {
-				// Only shifts the first 6 columns
-				for (int col = 0; col < 6; col++) {
-					this.array[row][col] = this.array[row][col + 1];
-				}
-				// Inserts the provided array provided in the rightmost column
-				this.array[row][6] = colReplace.getElement(row);
+			for(int col = 0; col < 6; col++){
+				setCol(col, getCol(col+1));
 			}
+			
+			// Inserts provided column to the far right
+			setCol(6, colReplace);
 		} else if (direction == RIGHT) {
-			// Stores the rightmost column in an array
-			for (int i = 0; i < 7; i++) {
-				array[i] = this.array[i][6];
-			}
+			
+			// Stores the rightmost column in an Array7
+			array = getCol(6);
 
 			// Shifts the content to the right
-			for (int row = 0; row < 7; row++) {
-				// Only shifts the last 6 columns
-				for (int col = 6; col > 0; col++) {
-					this.array[row][col] = this.array[row][col - 1];
-				}
-				// Inserts the provided array in the leftmost column
-				this.array[row][0] = colReplace.getElement(row);
+			for(int col = 6; col > 0; col--){
+				setCol(col, getCol(col-1));
 			}
+			// Inserts provided column to the far left
+			setCol(0, colReplace);
 		}
 
-		return new Array7(array);
-	}
-
+		return array;
+	}	
 }
