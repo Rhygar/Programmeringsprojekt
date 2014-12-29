@@ -111,6 +111,7 @@ public class TestEnvironment extends JPanel {
 			for(int j = 0; j < array[i].length; j++) {
 				String value = array[i][j] + "";
 				labels[i][j].setText(value);
+				labels[i][j].setBackground(Color.BLACK);
 			}
 		}
 	}	
