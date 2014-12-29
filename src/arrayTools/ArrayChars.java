@@ -4,17 +4,6 @@ import javax.swing.JFrame;
 
 public class ArrayChars {
 
-//	private final int A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7,
-//				I = 8, J = 9, K = 10, L = 11, M = 12, N = 13, O = 14, P = 15,
-//				Q = 16, R = 17, S = 18, T = 19, U = 20, V = 21, W = 22, X = 23,
-//				Y = 24, Z = 25, C0 = 26, C1 = 27, C2 = 28, C3 = 29, C4 = 30,
-//				C5 = 31, C6 = 32, C7 = 33, C8 = 34, C9 = 35, SPACE =36,DOT = 37,
-//				COMMA =38,EXCLAMATION = 39,QUESTIONMARK = 40,SITUATIONCHAR = 41, 
-//				HYPHEN = 42,PLUS = 43,UNDERSCORE = 44,PERCENT = 45,AND = 46, 
-//				COLON = 47,SEMICOLON = 48,LPARANTHESIS = 49,RPARANTHESIS = 50,
-//				EQUAL = 51, LBRACKET =52,RBRACKET =53,MULTIPLY = 54,LCURLYBRACKET = 55
-//				,RCURLYBRACKET = 56,ATSIGN = 57,UNKNOWN = 58;
-	
 	private Array7x7[] chars = new Array7x7[128];
 
 	public ArrayChars() throws Exception {
