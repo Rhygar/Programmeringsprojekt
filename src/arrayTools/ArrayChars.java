@@ -617,8 +617,6 @@ public class ArrayChars {
 		}else
 			return chars[UNKNOWN];
 	}
-    public static void main(String args[]){
-    	System.out.println(chars [A]);
-    }
+    
 
 }
