@@ -1,87 +1,90 @@
 package arrayTools;
 
+import javax.swing.JFrame;
+
 public class ArrayChars {
 
-	private final int A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7,
-				I = 8, J = 9, K = 10, L = 11, M = 12, N = 13, O = 14, P = 15,
-				Q = 16, R = 17, S = 18, T = 19, U = 20, V = 21, W = 22, X = 23,
-				Y = 24, Z = 25, C0 = 26, C1 = 27, C2 = 28, C3 = 29, C4 = 30,
-				C5 = 31, C6 = 32, C7 = 33, C8 = 34, C9 = 35, SPACE =36,DOT = 37,
-				COMMA =38,EXCLAMATION = 39,QUESTIONMARK = 40,SITUATIONCHAR = 41, HYPHEN = 42,PLUS = 43
-				,UNDERSCORE = 44,PERCENT = 45,AND = 46, COLON = 47,SEMICOLON = 48,LPARANTHESIS = 49
-				,RPARANTHESIS = 50,EQUAL = 51, LBRACKET =52,RBRACKET =53,MULTIPLY = 54,LCURLYBRACKET = 55
-				,RCURLYBRACKET = 56,ATSIGN = 57,UNKNOWN = 58;
+//	private final int A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7,
+//				I = 8, J = 9, K = 10, L = 11, M = 12, N = 13, O = 14, P = 15,
+//				Q = 16, R = 17, S = 18, T = 19, U = 20, V = 21, W = 22, X = 23,
+//				Y = 24, Z = 25, C0 = 26, C1 = 27, C2 = 28, C3 = 29, C4 = 30,
+//				C5 = 31, C6 = 32, C7 = 33, C8 = 34, C9 = 35, SPACE =36,DOT = 37,
+//				COMMA =38,EXCLAMATION = 39,QUESTIONMARK = 40,SITUATIONCHAR = 41, 
+//				HYPHEN = 42,PLUS = 43,UNDERSCORE = 44,PERCENT = 45,AND = 46, 
+//				COLON = 47,SEMICOLON = 48,LPARANTHESIS = 49,RPARANTHESIS = 50,
+//				EQUAL = 51, LBRACKET =52,RBRACKET =53,MULTIPLY = 54,LCURLYBRACKET = 55
+//				,RCURLYBRACKET = 56,ATSIGN = 57,UNKNOWN = 58;
 	
 	private Array7x7[] chars = new Array7x7[128];
 
 	public ArrayChars() throws Exception {
 		chars['A'] = new Array7x7(charA);
 		chars['B'] = new Array7x7(charB);
-		chars[C] = new Array7x7(charC);
-		chars[D] = new Array7x7(charD);
-		chars[E] = new Array7x7(charE);
-		chars[F] = new Array7x7(charF);
-		chars[G] = new Array7x7(charG);
-		chars[H] = new Array7x7(charH);
-		chars[I] = new Array7x7(charI);
-		chars[J] = new Array7x7(charJ);
-		chars[K] = new Array7x7(charK);
-		chars[L] = new Array7x7(charL);
-		chars[M] = new Array7x7(charM);
-		chars[N] = new Array7x7(charN);
-		chars[O] = new Array7x7(charO);
-		chars[P] = new Array7x7(charP);
-		chars[Q] = new Array7x7(charQ);
-		chars[R] = new Array7x7(charR);
-		chars[S] = new Array7x7(charS);
-		chars[T] = new Array7x7(charT);
-		chars[U] = new Array7x7(charU);
-		chars[V] = new Array7x7(charV);
-		chars[W] = new Array7x7(charW);
-		chars[X] = new Array7x7(charX);
-		chars[Y] = new Array7x7(charY);
-		chars[Z] = new Array7x7(charZ);
-		chars[C0] = new Array7x7(char0);
-		chars[C1] = new Array7x7(char1);
-		chars[C2] = new Array7x7(char2);
-		chars[C3] = new Array7x7(char3);
-		chars[C4] = new Array7x7(char4);
-		chars[C5] = new Array7x7(char5);
-		chars[C6] = new Array7x7(char6);
-		chars[C7] = new Array7x7(char7);
-		chars[C8] = new Array7x7(char8);
-		chars[C9] = new Array7x7(char9);
-		chars[SPACE] = new Array7x7(SPACE1);
-		chars[DOT] = new Array7x7(DOT1);
-		chars[COMMA] = new Array7x7(COMMA1);
-		chars[EXCLAMATION] = new Array7x7(EXCLAMATION1);
-		chars[QUESTIONMARK] = new Array7x7(QMARK);
-		chars[SITUATIONCHAR] = new Array7x7(SCHAR);
-		chars[HYPHEN] = new Array7x7(HYPHEN1);
-		chars[PLUS] = new Array7x7(PLUS1);
-		chars[UNDERSCORE] = new Array7x7(USCORE);
-		chars[PERCENT] = new Array7x7(PERCENT1);
-		chars[AND] = new Array7x7(AND1);
-		chars[COLON] = new Array7x7(COLON1);
-		chars[SEMICOLON] = new Array7x7(SCOLON);
-		chars[LPARANTHESIS] = new Array7x7(LPARAN);
-		chars[RPARANTHESIS] = new Array7x7(RPARAN);
-		chars[EQUAL] = new Array7x7(EQUAL1);
-		chars[LBRACKET] = new Array7x7(LBRACK);
-		chars[RBRACKET] = new Array7x7(RBRACK);
-		chars[MULTIPLY] = new Array7x7(MULTI);
-		chars[LCURLYBRACKET] = new Array7x7(LCURLY);
-		chars[RCURLYBRACKET] = new Array7x7(RCURLY);
-		chars[ATSIGN] = new Array7x7(AT);
-		chars[UNKNOWN] = new Array7x7(UNKNOWN1);
+		chars['C'] = new Array7x7(charC);
+		chars['D'] = new Array7x7(charD);
+		chars['E'] = new Array7x7(charE);
+		chars['F'] = new Array7x7(charF);
+		chars['G'] = new Array7x7(charG);
+		chars['H'] = new Array7x7(charH);
+		chars['I'] = new Array7x7(charI);
+		chars['J'] = new Array7x7(charJ);
+		chars['K'] = new Array7x7(charK);
+		chars['L'] = new Array7x7(charL);
+		chars['M'] = new Array7x7(charM);
+		chars['N'] = new Array7x7(charN);
+		chars['O'] = new Array7x7(charO);
+		chars['P'] = new Array7x7(charP);
+		chars['Q'] = new Array7x7(charQ);
+		chars['R'] = new Array7x7(charR);
+		chars['S'] = new Array7x7(charS);
+		chars['T'] = new Array7x7(charT);
+		chars['U'] = new Array7x7(charU);
+		chars['V'] = new Array7x7(charV);
+		chars['W'] = new Array7x7(charW);
+		chars['X'] = new Array7x7(charX);
+		chars['Y'] = new Array7x7(charY);
+		chars['Z'] = new Array7x7(charZ);
+		chars['0'] = new Array7x7(char0);
+		chars['1'] = new Array7x7(char1);
+		chars['2'] = new Array7x7(char2);
+		chars['3'] = new Array7x7(char3);
+		chars['4'] = new Array7x7(char4);
+		chars['5'] = new Array7x7(char5);
+		chars['6'] = new Array7x7(char6);
+		chars['7'] = new Array7x7(char7);
+		chars['8'] = new Array7x7(char8);
+		chars['9'] = new Array7x7(char9);
+		chars[' '] = new Array7x7(SPACE1);
+		chars['.'] = new Array7x7(DOT1);
+		chars[','] = new Array7x7(COMMA1);
+		chars['!'] = new Array7x7(EXCLAMATION1);
+		chars['?'] = new Array7x7(QMARK);
+		chars['"'] = new Array7x7(SCHAR);
+		chars['-'] = new Array7x7(HYPHEN1);
+		chars['_'] = new Array7x7(PLUS1);
+		chars['_'] = new Array7x7(USCORE);
+		chars['%'] = new Array7x7(PERCENT1);
+		chars['&'] = new Array7x7(AND1);
+		chars[':'] = new Array7x7(COLON1);
+		chars[';'] = new Array7x7(SCOLON);
+		chars['('] = new Array7x7(LPARAN);
+		chars[')'] = new Array7x7(RPARAN);
+		chars['='] = new Array7x7(EQUAL1);
+		chars['['] = new Array7x7(LBRACK);
+		chars[']'] = new Array7x7(RBRACK);
+		chars['*'] = new Array7x7(MULTI);
+		chars['{'] = new Array7x7(LCURLY);
+		chars['}'] = new Array7x7(RCURLY);
+		chars['@'] = new Array7x7(AT);
+		chars[127] = new Array7x7(UNKNOWN1);
 	}
 
-	private static int[][] charA = {
+	private final int[][] charA = {
 		{ 0, 0, 1, 1, 1, 0, 0 },
 		{ 0, 1, 0, 0, 0, 1, 0 },
 		{ 0, 1, 0, 0, 0, 1, 0 },
-		{ 0, 1, 0, 0, 0, 1, 0 },
 		{ 0, 1, 1, 1, 1, 1, 0 },
+		{ 0, 1, 0, 0, 0, 1, 0 },
 		{ 0, 1, 0, 0, 0, 1, 0 }, 
 		{ 0, 1, 0, 0, 0, 1, 0 } };
 
@@ -446,10 +449,10 @@ public class ArrayChars {
 		{ 0, 0, 0, 1, 0, 0, 0 } };
 
 	private static int[][] SCHAR = { 
-		{ 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 1, 0, 1, 0, 0, 0 },
 		{ 0, 1, 0, 1, 0, 0, 0 },
-		{ 0, 1, 0, 1, 0, 0, 0 }, 
+		{ 0, 1, 0, 1, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0 }, 
 		{ 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0 }, 
 		{ 0, 0, 0, 0, 0, 0, 0 } };
@@ -563,12 +566,12 @@ public class ArrayChars {
 		{ 0, 0, 1, 1, 1, 0, 0 } };
 
 	private static int[][]  MULTI=  { 
-		{ 0, 0, 0, 0, 0, 0, 0 },
 		{ 0, 0, 0, 1, 0, 0, 0 },
 		{ 0, 1, 0, 1, 0, 1, 0 },
-		{ 0, 0, 1, 1, 1, 0, 0 }, 
-		{ 0, 1, 0, 1, 0, 1, 0 },
-		{ 0, 0, 0, 1, 0, 0, 0 }, 
+		{ 0, 0, 1, 1, 1, 0, 0 },
+		{ 0, 1, 0, 1, 0, 1, 0 }, 
+		{ 0, 0, 0, 1, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0 }, 
 		{ 0, 0, 0, 0, 0, 0, 0 } };
 	
 	private static int[][] LCURLY = { 
@@ -606,12 +609,30 @@ public class ArrayChars {
 		{ 0, 1, 0, 0, 0, 1, 0 },
 		{ 0, 1, 0, 0, 0, 1, 0 }, 
 		{ 0, 1, 1, 1, 1, 1, 0 } };
+
+
+
+
 	
 	public Array7x7 getChar(char chr){
 		if(chr >= 0 && chr<=127){
 			return chars[chr];
 		}else
-			return chars[UNKNOWN];
+			return chars[127];
 	}
+
+    public static void main(String[] args) throws Exception {
+    	ArrayChars chars = new ArrayChars();
+    	TestEnvironment testEnv = new TestEnvironment();
+    	JFrame frame = new JFrame("Test Arrays");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		frame.add(testEnv);
+		frame.pack();
+		frame.setVisible(true);
+		
+		testEnv.setArray7x7(chars.getChar('?'));
+    }
+
 }
 
