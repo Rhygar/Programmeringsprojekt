@@ -15,8 +15,8 @@ public class ArrayChars {
 	private Array7x7[] chars = new Array7x7[128];
 
 	public ArrayChars() throws Exception {
-		chars[A] = new Array7x7(charA);
-		chars[B] = new Array7x7(charB);
+		chars['A'] = new Array7x7(charA);
+		chars['B'] = new Array7x7(charB);
 		chars[C] = new Array7x7(charC);
 		chars[D] = new Array7x7(charD);
 		chars[E] = new Array7x7(charE);
@@ -76,7 +76,7 @@ public class ArrayChars {
 		chars[UNKNOWN] = new Array7x7(UNKNOWN1);
 	}
 
-	private final static int[][] charA = {
+	private static int[][] charA = {
 		{ 0, 0, 1, 1, 1, 0, 0 },
 		{ 0, 1, 0, 0, 0, 1, 0 },
 		{ 0, 1, 0, 0, 0, 1, 0 },
@@ -606,10 +606,6 @@ public class ArrayChars {
 		{ 0, 1, 0, 0, 0, 1, 0 },
 		{ 0, 1, 0, 0, 0, 1, 0 }, 
 		{ 0, 1, 1, 1, 1, 1, 0 } };
-
-
-
-	
 	
 	public Array7x7 getChar(char chr){
 		if(chr >= 0 && chr<=127){
@@ -617,6 +613,5 @@ public class ArrayChars {
 		}else
 			return chars[UNKNOWN];
 	}
-    
-
 }
+

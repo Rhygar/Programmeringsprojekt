@@ -17,23 +17,30 @@ public class Array7x7 {
 		array = new int[7][7];
 	}
 
-	/**
+	/** 
 	 * Creates an object with provided array
 	 * 
 	 * @param array
 	 *            Array to be used. Has to be 7*7.
 	 * @throws Exception
 	 *             If array is wrong size.
-	 */
-	public Array7x7(int[][] array) throws Exception {
-		if (array.length == 7 && array[0].length == 7) {
-			for(int i = 0; i < array.length; i++){
-				this.array[i] = array[i].clone();
-			}
-		} else {
-			throw new Exception("Incorrect array size");
-		}
+	*/ 
+//	public Array7x7(int[][] array) throws Exception {
+//		if (array.length == 7 && array[0].length == 7) {
+//			for(int i = 0; i < array.length; i++){
+//				this.array[i] = array[i].clone();
+//			}
+//		} else {
+//			throw new Exception("Incorrect array size");
+//		}
+//	}
+	
+	public Array7x7(int[][] array) {
+		this.array = array;
 	}
+	
+	
+
 
 	/**
 	 * Sets a value in specified row and column

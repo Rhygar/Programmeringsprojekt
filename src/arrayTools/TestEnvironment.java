@@ -253,6 +253,15 @@ public class TestEnvironment extends JPanel {
 			}
 			
 		}
+	}
+	
+	public static void main (String[] args) {
+		TestEnvironment run = new TestEnvironment();
+		JFrame frame = new JFrame("Test Arrays");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(run);
+		frame.pack();
+		frame.setVisible(true);
 		
 	}
 }
