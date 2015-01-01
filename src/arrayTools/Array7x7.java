@@ -4,8 +4,8 @@ package arrayTools;
  * Class which stores and manipulates a 2-D integer array that is 7 by 7
  */
 public class Array7x7 {
-	private static final int LEFT = 1;
-	private static final int RIGHT = 2;
+	public static final int LEFT = 1;
+	public static final int RIGHT = 2;
 	private int[][] array;
 
 	/**

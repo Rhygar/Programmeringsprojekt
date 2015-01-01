@@ -125,7 +125,7 @@ public class TestEnvironment2 extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			if (btnLeft == e.getSource()) {
 				try {
-					array77.shiftContent(new Array7(), 1);
+					array77.shiftContent(new Array7(), Array7x7.LEFT);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -134,7 +134,7 @@ public class TestEnvironment2 extends JPanel {
 //				JOptionPane.showMessageDialog(null, "You clicked on Left button!");
 			} else if(btnRight == e.getSource()) {
 				try {
-					array77.shiftContent(new Array7(), 2) ;
+					array77.shiftContent(new Array7(), Array7x7.RIGHT) ;
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
