@@ -134,13 +134,13 @@ public class TestEnvironment2 extends JPanel {
 //				JOptionPane.showMessageDialog(null, "You clicked on Left button!");
 			} else if(btnRight == e.getSource()) {
 				try {
-					array77.shiftContent(new Array7(), 2);
+					array77.shiftContent(new Array7(), 2) ;
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				update();
-				//				JOptionPane.showMessageDialog(null, "You clicked on Right button");
+//				JOptionPane.showMessageDialog(null, "You clicked on Right button");
 			}
 			
 		}
