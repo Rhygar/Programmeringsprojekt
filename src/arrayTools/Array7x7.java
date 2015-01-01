@@ -1,7 +1,5 @@
 package arrayTools;
 
-import com.sun.javafx.collections.SetAdapterChange;
-
 /**
  * Class which stores and manipulates a 2-D integer array that is 7 by 7
  */
@@ -25,22 +23,13 @@ public class Array7x7 {
 	 * @throws Exception
 	 *             If array is wrong size.
 	*/ 
-//	public Array7x7(int[][] array) throws Exception {
-//		if (array.length == 7 && array[0].length == 7) {
-//			for(int i = 0; i < array.length; i++){
-//				this.array[i] = array[i].clone();
-//			}
-//		} else {
-//			throw new Exception("Incorrect array size");
-//		}
-//	}
-	
-	public Array7x7(int[][] array) {
-		this.array = array;
+	public Array7x7(int[][] array) throws Exception {
+		if (array.length == 7 && array[0].length == 7) {
+			this.array = array;
+		} else {
+			throw new Exception("Incorrect array size");
+		}
 	}
-	
-	
-
 
 	/**
 	 * Sets a value in specified row and column
