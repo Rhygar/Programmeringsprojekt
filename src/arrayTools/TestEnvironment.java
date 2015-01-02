@@ -13,6 +13,10 @@ import javax.swing.*;
  *
  */
 public class TestEnvironment extends JPanel {
+	
+	private Array7 arr7s;
+	private Array7 arr7w;
+	private Array7x7 arr77;
 
 	private JLabel[][] labels = new JLabel[7][7];		//Jlabel components for the 7x7 array. Goes in center
 	private JLabel[] labelsW = new JLabel[7];			//JLabel components for the array[7]. Goes in west
@@ -28,7 +32,9 @@ public class TestEnvironment extends JPanel {
 	private Font font = new Font( "SansSerif", Font.BOLD, 30 );
 	
 	
-	public TestEnvironment() {
+	public TestEnvironment(Array7x7 arr77) {
+		
+		this.arr77 = arr77;
 		
 		//main test window size
 		setPreferredSize(new Dimension(500,400));
@@ -125,8 +131,8 @@ public class TestEnvironment extends JPanel {
 	 * Sets values in TestEnvironment from Array7x7 object.
 	 * @param arr Array7x7 object
 	 */
-	public void setArray7x7(Array7x7 arr) {
-		set7x7ArrayInt(arr.getArray());
+	public void update() {
+		set7x7ArrayInt(arr77.getArray());
 	}
 	
 	/**
@@ -214,10 +220,13 @@ public class TestEnvironment extends JPanel {
 	}
 	
 	
-	public void readRow() {
-		int[] array;
-		array = getRow(Integer.parseInt(tfRowNbr.getText()));
-		setHorizontalArray(array);
+	public void readRow() throws Exception {
+		int rowNbr = Integer.parseInt(tfRowNbr.getText());
+		arr7s = arr77.getRow(rowNbr);
+		setHorizontalArray(arr7s.getArray());
+//		int[] array;
+//		array = getRow(Integer.parseInt(tfRowNbr.getText()));
+//		setHorizontalArray(array);
 	}
 	
 	public void writeRow() {
@@ -229,10 +238,13 @@ public class TestEnvironment extends JPanel {
 		setHorizontalArray(array);
 	}
 	
-	public void readCol() {
-		int[] array;
-		array = getCol(Integer.parseInt(tfColNbr.getText()));
-		setVerticalArray(array);
+	public void readCol() throws Exception {
+		int colNbr = Integer.parseInt(tfColNbr.getText());
+		arr7w = arr77.getCol(colNbr);
+		setVerticalArray(arr7w.getArray());
+//		int[] array;
+//		array = getCol(Integer.parseInt(tfColNbr.getText()));
+//		setVerticalArray(array);
 	}
 	
 	public void writeCol() {
@@ -249,11 +261,21 @@ public class TestEnvironment extends JPanel {
 
 		public void actionPerformed(ActionEvent e) {
 			if (btnReadRow == e.getSource()) {
-				readRow();
+				try {
+					readRow();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			} else if (btnWriteRow == e.getSource()) {
 				writeRow();
 			} else if (btnReadCol == e.getSource()) {
-				readCol();
+				try {
+					readCol();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			} else if (btnWriteCol == e.getSource()) {
 				writeCol();
 			}
@@ -261,8 +283,11 @@ public class TestEnvironment extends JPanel {
 		}
 	}
 	
-	public static void main (String[] args) {
-		TestEnvironment run = new TestEnvironment();
+	public static void main (String[] args) throws Exception {
+		ArrayChars chars = new ArrayChars();
+		
+		TestEnvironment run = new TestEnvironment(chars.getChar('A'));
+		run.update();
 		JFrame frame = new JFrame("Test Arrays");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(run);
