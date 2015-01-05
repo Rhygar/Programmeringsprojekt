@@ -176,17 +176,7 @@ public class TestEnvironment2 extends JPanel {
 		}
 		
 	}	
-	
-	public void paus() {
-		int p = 0;
-		for(int i = 0; i < 1000; i++) {
-			p++;
-		}
-	}
-		
-		
-	
-	
+
 	private class AL implements ActionListener {
 		int[] a = {1,1,1,1,1,1,1};
 		Array7 arr = new Array7(a);
@@ -201,9 +191,7 @@ public class TestEnvironment2 extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				paus();
 				update();
-//				JOptionPane.showMessageDialog(null, "You clicked on Left button!");
 			} else if(btnRight == e.getSource()) {
 				try {
 					arr7e = array77.shiftContent(arr7w, Array7x7.RIGHT);
@@ -212,9 +200,7 @@ public class TestEnvironment2 extends JPanel {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				paus();
 				update();
-//				JOptionPane.showMessageDialog(null, "You clicked on Right button");
 			}
 			
 		}
