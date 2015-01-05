@@ -13,6 +13,9 @@ import javax.swing.*;
 public class TestEnvironment2 extends JPanel {
 	
 	private Array7x7 array77;
+	private static int[] c = {1,1,1,1,1,1,1}; 
+	private static Array7 arr7w = new Array7(c);
+	private static Array7 arr7e = new Array7(c);
 	
 	private JLabel[][] labels = new JLabel[7][7];
 	private JLabel[] labelsW = new JLabel[7];	
@@ -96,7 +99,41 @@ public class TestEnvironment2 extends JPanel {
 		btnLeft.addActionListener(new AL());
 		btnRight.addActionListener(new AL());
 	}
-		
+	
+	public void setArrayWest(Array7 arr) {
+		for (int i = 0; i < 7; i++) {
+			String text = arr.getElement(i) + "";
+			labelsW[i].setText(text);
+		}
+	}
+	
+	public void setArrayEast(Array7 arr) {
+		for (int i = 0; i < 7; i++) {
+			String text = arr.getElement(i) + "";
+			labelsE[i].setText(text);
+		}
+	}
+	
+	public Array7 getArrayWest() {
+		Array7 array = new Array7();
+		int value = 0;
+		for (int i = 0; i < 7; i++) {
+			value = Integer.parseInt(labelsW[i].getText());
+			array.setElement(i, value);
+		}
+		return array; 
+	}
+	
+	public Array7 getArrayEast() {
+		Array7 array = new Array7();
+		int value = 0;
+		for (int i = 0; i < 7; i++) {
+			value = Integer.parseInt(labelsE[i].getText());
+			array.setElement(i, value);
+		}
+		return array; 
+	}
+	
 	/**
 	 * Sets values in a 7x7 JLabel
 	 * @param array 7x7 int[][] with values
@@ -115,30 +152,67 @@ public class TestEnvironment2 extends JPanel {
 				}
 			}
 		}
+		for(int i = 0; i < 7; i++) {
+			String text = arr7w.getElement(i) + "";
+			labelsW[i].setText(text);
+			if (text.equals("1")) {
+				labelsW[i].setBackground(Color.BLACK);
+				labelsW[i].setForeground(Color.BLACK);
+			} else if (text.equals("0")) {
+				labelsW[i].setBackground(Color.RED);
+				labelsW[i].setForeground(Color.RED);
+			}
+		}
+		for(int i = 0; i < 7; i++) {
+			String text = arr7e.getElement(i) + "";
+			labelsE[i].setText(text);
+			if (text.equals("1")) {
+				labelsE[i].setBackground(Color.BLACK);
+				labelsE[i].setForeground(Color.BLACK);
+			} else if (text.equals("0")) {
+				labelsE[i].setBackground(Color.RED);
+				labelsE[i].setForeground(Color.RED);
+			}
+		}
+		
 	}	
+	
+	public void paus() {
+		int p = 0;
+		for(int i = 0; i < 1000; i++) {
+			p++;
+		}
+	}
 		
 		
 	
 	
 	private class AL implements ActionListener {
-
+		int[] a = {1,1,1,1,1,1,1};
+		Array7 arr = new Array7(a);
 		public void actionPerformed(ActionEvent e) {
 			if (btnLeft == e.getSource()) {
 				try {
-					array77.shiftContent(new Array7(), Array7x7.LEFT);
+					arr7w = array77.shiftContent(arr7e, Array7x7.LEFT);
+					setArrayWest(arr7w);
+					
+					
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				paus();
 				update();
 //				JOptionPane.showMessageDialog(null, "You clicked on Left button!");
 			} else if(btnRight == e.getSource()) {
 				try {
-					array77.shiftContent(new Array7(), Array7x7.RIGHT) ;
+					arr7e = array77.shiftContent(arr7w, Array7x7.RIGHT);
+					setArrayEast(arr7e);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				paus();
 				update();
 //				JOptionPane.showMessageDialog(null, "You clicked on Right button");
 			}
@@ -150,7 +224,7 @@ public class TestEnvironment2 extends JPanel {
 		ArrayChars chars = new ArrayChars();
 		int[] arr = {1,1,1,1,1,1,1};
 		Array7 arr7 = new Array7(arr);
-		Array7x7 arr77 = chars.getChar('A');
+		Array7x7 arr77 = chars.getChar('B');
 		TestEnvironment2 test = new TestEnvironment2(arr77);
 //		arr77.shiftContent(arr7, 1);
 		test.update();
