@@ -43,16 +43,12 @@ public class TestColors extends Array7x7{
 		 * The character shifts first from center to left and then right.
 		 */
 
-		ColorDisplay d = new ColorDisplay(Color.RED, Color.CYAN);
-		d.setDisplay(arr77.getArray());
-		d.updateDisplay();
-		JOptionPane.showMessageDialog(null,d);
-
-
-		for(int i = 0; i <= 14; i++ ){ // göra en ordentlig for-loop för att få texten till att rinna, timer,
+		ColorDisplay d = new ColorDisplay(1,2,Color.RED, Color.CYAN);
+		
+		for(int i = 0; i <= 7; i++ ){ // göra en ordentlig for-loop för att få texten till att rinna, timer,
 										// spara undan rad som trillar överkanten, få den att börja från andra sidan.
 			arr77.shiftContent(arr7, 1);		
-			d.setDisplay(arr77.getArray());
+			d.setDisplay(arr77.getArray(),0,1);
 			d.updateDisplay();
 			JOptionPane.showMessageDialog(null,d);
 
