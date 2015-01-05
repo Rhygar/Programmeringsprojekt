@@ -19,13 +19,8 @@ public class Array7 {
 	 * @param array Array to be used. Has to be 7 long.
 	 * @throws Exception If array is wrong size
 	 */
-	public Array7(int[] array) throws Exception{
-		if(array.length == 7){
-			this.array = array.clone();
-		}else{
-			throw new Exception("Incorrect array size");
-		}
-		
+	public Array7(int[] array){
+		this.array = array.clone();		
 	}
 	
 	/**
