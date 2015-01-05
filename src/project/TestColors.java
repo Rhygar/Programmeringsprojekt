@@ -42,22 +42,22 @@ public class TestColors extends Array7x7{
 		 * Sets the background color to red and the borderline color to cyan.
 		 * The character shifts first from center to left and then right.
 		 */
-		
+
 		ColorDisplay d = new ColorDisplay(Color.RED, Color.CYAN);
 		d.setDisplay(arr77.getArray());
 		d.updateDisplay();
 		JOptionPane.showMessageDialog(null,d);
-	
-		arr77.shiftContent(arr7, 1);		
-		d.setDisplay(arr77.getArray());
-		d.updateDisplay();
-		JOptionPane.showMessageDialog(null,d);
-		
-		arr77.shiftContent(arr7, 2);		
-		d.setDisplay(arr77.getArray());
-		d.updateDisplay();
-		JOptionPane.showMessageDialog(null,d);
+
+
+		for(int i = 0; i <= 14; i++ ){ // göra en ordentlig for-loop för att få texten till att rinna, timer,
+										// spara undan rad som trillar överkanten, få den att börja från andra sidan.
+			arr77.shiftContent(arr7, 1);		
+			d.setDisplay(arr77.getArray());
+			d.updateDisplay();
+			JOptionPane.showMessageDialog(null,d);
+
+		}
 	}
 }
-		
-		
+
+
