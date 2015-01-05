@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="lib" path="C:/Users/Andreas/Documents/GitHub/Programmeringsprojekt/src/project/TestColors.jar"/>
+	<classpathentry kind="output" path="src"/>
 </classpath>
