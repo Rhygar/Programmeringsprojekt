@@ -108,7 +108,9 @@ public class Array7x7 {
 	 * @throws Exception
 	 *             ???
 	 */
-	public Array7 getCol(int col) throws Exception {
+	public Array7 getCol(int col)
+//			throws Exception 
+	{
 		int[] array = new int[7];
 
 		for (int i = 0; i < 7; i++) {
@@ -140,7 +142,8 @@ public class Array7x7 {
 	 *             ???
 	 */
 	public Array7 shiftContent(Array7 colReplace, int direction)
-			throws Exception {
+//			throws Exception 
+	{
 		Array7 array = null;
 
 		if (direction == LEFT) {
