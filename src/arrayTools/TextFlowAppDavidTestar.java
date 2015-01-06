@@ -23,7 +23,7 @@ public class TextFlowAppDavidTestar extends JPanel{
 	public static void main(String[] args) throws Exception{
 		
 		//ColorDisplay is a frame. 1,1 in arguments mean 7*7. 2,1 is 14*7 and so on. 
-		ColorDisplay d = new ColorDisplay(2,1,Color.RED, Color.CYAN);
+		ColorDisplay d = new ColorDisplay(1,1,Color.RED, Color.CYAN);
 		
 		//An object with all possible characters
 		ArrayChars chars = new ArrayChars();						
