@@ -111,7 +111,7 @@ public class TextFlowAppDavidTestarVidare extends JPanel {
 
 			}
 			// Initial delay and period in milliseconds
-		}, 500, 500);
+		}, 100, 100);
 	}
 
 }
