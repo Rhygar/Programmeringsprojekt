@@ -210,11 +210,11 @@ public class TestEnvironment2 extends JPanel {
 		ArrayChars chars = new ArrayChars();
 		int[] arr = {1,1,1,1,1,1,1};
 		Array7 arr7 = new Array7(arr);
-<<<<<<< HEAD
+
 		Array7x7 arr77 = chars.getChar('@');
-=======
-		Array7x7 arr77 = chars.getChar('B');
->>>>>>> origin/test
+
+//		Array7x7 arr77 = chars.getChar('B');
+
 		TestEnvironment2 test = new TestEnvironment2(arr77);
 		
 //		arr77.shiftContent(arr7, 1);
