@@ -14,10 +14,9 @@ public class Array7 {
 		array = new int[7];
 	}
 	/**
-	 * reates an object with provided array
+	 * Creates an object with provided array
 	 * 
 	 * @param array Array to be used. Has to be 7 long.
-	 * @throws Exception If array is wrong size
 	 */
 	public Array7(int[] array){
 		this.array = array.clone();		
