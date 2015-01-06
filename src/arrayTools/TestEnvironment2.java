@@ -150,8 +150,9 @@ public class TestEnvironment2 extends JPanel {
 		ArrayChars chars = new ArrayChars();
 		int[] arr = {1,1,1,1,1,1,1};
 		Array7 arr7 = new Array7(arr);
-		Array7x7 arr77 = chars.getChar('A');
+		Array7x7 arr77 = chars.getChar('@');
 		TestEnvironment2 test = new TestEnvironment2(arr77);
+		
 //		arr77.shiftContent(arr7, 1);
 		test.update();
 		JFrame frame = new JFrame("Test Arrays");

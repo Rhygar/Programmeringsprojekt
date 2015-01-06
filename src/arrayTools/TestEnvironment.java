@@ -112,7 +112,7 @@ public class TestEnvironment extends JPanel {
 	 * Sets values in a 7x7 JLabel
 	 * @param array 7x7 int[][] with values
 	 */
-	public void set7x7ArrayInt(int[][] array) {
+	public  void set7x7ArrayInt(int[][] array) {
 		for(int i = 0; i < array.length; i++) {
 			for(int j = 0; j < array[i].length; j++) {
 				String value = array[i][j] + "";
@@ -284,12 +284,32 @@ public class TestEnvironment extends JPanel {
 	}
 	
 	public static void main (String[] args) throws Exception {
-		ArrayChars chars = new ArrayChars();
+//		ArrayChars chars = new ArrayChars();
 		
-		TestEnvironment run = new TestEnvironment(chars.getChar('A'));
-		run.update();
+		
+		int arr [][] ={{1,2,3,4,5,6,7},
+					{8,9,10,11,12,13,14},
+					{15,16,17,18,19,20,21},
+					{22,23,24,25,26,27,28},
+					{29,30,31,32,33,34,35},
+					{36,37,38,39,40,41,42},
+					{43,44,45,46,47,48,49}};
+		
+		int arr2 [] = {2,9,1,4,8,6,7};
+		
+		Array7 arr1 = new Array7 (arr2);
+		Array7x7 arr7 = new Array7x7(arr);
+		
+		TestEnvironment run = new TestEnvironment(arr7);
+		
+//		arr7.setElement(0, 3, 3);
+//		arr7.setRow(1,arr1.getArray());
+		run.set7x7ArrayInt(arr7.getArray());
 		JFrame frame = new JFrame("Test Arrays");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		run.update();
 		frame.add(run);
 		frame.pack();
 		frame.setVisible(true);
