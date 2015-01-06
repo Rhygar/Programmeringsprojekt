@@ -10,13 +10,16 @@ import project.ColorDisplay;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TextFlowAppDavidTestarVidare extends JPanel {
+public class TextFlow extends JPanel {
 	private static final long serialVersionUID = -2910434031371935286L; // Because of JPanel
 	private final static int displaySize = 5;
 
 	/**
 	 * The main method asks for a string from the user and displays it character
-	 * by character in a 7x7 grid.
+	 * by character in a 35x7 grid.
+	 * 
+	 * <<<<< Seems to be problems when there are 2 of the same character in the string. Problem must be that they are pointing to the same object. >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> !!!!!! 
+	 * This also explains short strings (3 or less) because these are being filled with blank spaces, which also gives the same-character-conflict!!
 	 * 
 	 * @param args
 	 * @throws Exception
@@ -44,7 +47,7 @@ public class TextFlowAppDavidTestarVidare extends JPanel {
 
 		// Inserts the graphical counterpart for each character
 		// If the string is less than 4 it will be filled with space up to the fifth position.
-		if (txt.length() > 4) {
+		if (txt.length() < 4) {
 			for (int i = 0; i < txt.length(); i++) {
 				txtArrays[i] = chars.getChar(txt.charAt(i));
 			}
@@ -81,10 +84,9 @@ public class TextFlowAppDavidTestarVidare extends JPanel {
 
 				// shifting the content to LEFT in all positions in Array7x7[].
 				for (int p = 0; p < txtArrays.length; p++) {
-					// each blocks last column will receive the next
+					// Each blocks last column will receive the next
 					// blocks first column, unless it's the last block.
-					// That one will receive the first blocks first
-					// column.
+					// That one will receive the first blocks first column.
 					if (p == txtArrays.length - 1) {
 						arr = txtArrays[0].getCol(0);
 					} else {
@@ -111,7 +113,7 @@ public class TextFlowAppDavidTestarVidare extends JPanel {
 
 			}
 			// Initial delay and period in milliseconds
-		}, 100, 100);
+		}, 200, 200);
 	}
 
 }
