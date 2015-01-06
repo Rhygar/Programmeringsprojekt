@@ -50,7 +50,7 @@ public class ArrayChars {
 		chars['?'] = new Array7x7(QMARK);
 		chars['"'] = new Array7x7(SCHAR);
 		chars['-'] = new Array7x7(HYPHEN1);
-		chars['_'] = new Array7x7(PLUS1);
+		chars['+'] = new Array7x7(PLUS1);
 		chars['_'] = new Array7x7(USCORE);
 		chars['%'] = new Array7x7(PERCENT1);
 		chars['&'] = new Array7x7(AND1);
@@ -612,15 +612,15 @@ public class ArrayChars {
 
     public static void main(String[] args) throws Exception {
     	ArrayChars chars = new ArrayChars();
-    	TestEnvironment testEnv = new TestEnvironment();
+    	TestEnvironment testEnv = new TestEnvironment(chars.getChar('0'));
+    	testEnv.update();
     	JFrame frame = new JFrame("Test Arrays");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		frame.add(testEnv);
 		frame.pack();
 		frame.setVisible(true);
 		
-		testEnv.setArray7x7(chars.getChar('?'));
+		
     }
 
 }
