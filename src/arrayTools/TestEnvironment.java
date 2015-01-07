@@ -25,6 +25,8 @@ public class TestEnvironment extends JPanel {
 	private JButton btnWriteRow = new JButton("Skriv rad");
 	private JButton btnReadCol = new JButton("Läs kol");
 	private JButton btnWriteCol = new JButton("Skriv kol");
+	private JButton btnModRow = new JButton("Mod Row");
+	private JButton btnModCol = new JButton("Mod Col");
 	private JTextField tfRowNbr = new JTextField("Input rad nr");
 	private JTextField tfColNbr = new JTextField("Input kol nr");
 	private Dimension block = new Dimension(40,40);		//size for all the JLabel components 
@@ -78,6 +80,8 @@ public class TestEnvironment extends JPanel {
 		east.add(btnReadCol);
 		east.add(btnWriteCol);
 		east.add(tfColNbr);
+		east.add(btnModRow);
+		east.add(btnModCol);
 		
 		
 		//panel center, where the 7x7 array is
@@ -106,13 +110,15 @@ public class TestEnvironment extends JPanel {
 		btnReadCol.addActionListener(new AL());
 		btnWriteRow.addActionListener(new AL());
 		btnWriteCol.addActionListener(new AL());
+		btnModRow.addActionListener(new AL());
+		btnModCol.addActionListener(new AL());
 	}
 	
 	/**
 	 * Sets values in a 7x7 JLabel
 	 * @param array 7x7 int[][] with values
 	 */
-	public  void set7x7ArrayInt(int[][] array) {
+	public void set7x7ArrayInt(int[][] array) {
 		for(int i = 0; i < array.length; i++) {
 			for(int j = 0; j < array[i].length; j++) {
 				String value = array[i][j] + "";
@@ -127,12 +133,26 @@ public class TestEnvironment extends JPanel {
 		}
 	}	
 	
+	public void setArray7w(int[] array) {
+		for(int i = 0; i < 7; i++) {
+			labelsW[i].setText(array[i] + "");
+		}
+	}
+	
+	public void setArray7s(int[] array) {
+		for(int i = 0; i < 7; i++) {
+			labelsS[i].setText(array[i] + "");
+		}
+	}
+	
 	/**
 	 * Sets values in TestEnvironment from Array7x7 object.
 	 * @param arr Array7x7 object
 	 */
 	public void update() {
 		set7x7ArrayInt(arr77.getArray());
+//		setArray7w(arr7w.getArray());
+//		setArray7s(arr7s.getArray());
 	}
 	
 	/**
@@ -175,86 +195,97 @@ public class TestEnvironment extends JPanel {
 	
 	/**
 	 * Changing the horizontal array
-	 * @param arr 7 element array
+	 * @param arr Array7 object
 	 */
-	public void setHorizontalArray(int[] arr) {
-		for (int i = 0; i < arr.length; i++) {
-			String text = arr[i] + "";
+	public void setHorizontalArray(Array7 arr) {
+		for (int i = 0; i < 7; i++) {
+			String text = arr.getElement(i) + "";
 			labelsS[i].setText(text);
 		}
 	}
 	
 	/**
 	 * Changing the vertical array
-	 * @param arr 7 element array
+	 * @param arr Array7 object
 	 */
-	public void setVerticalArray(int[] arr) {
-		for (int i = 0; i < arr.length; i++) {
-			String text = arr[i] + "";
+	public void setVerticalArray(Array7 arr) {
+		for (int i = 0; i < 7; i++) {
+			String text = arr.getElement(i) + "";
 			labelsW[i].setText(text);
 		}
 	}
 	
 	/**
 	 * Returns the horizontal array
-	 * @return array 7 int array
+	 * @return arr7s Array7 object
 	 */
-	public int[] getHorizontalArray() {
-		int[] array = new int[7];
-		for (int i = 0; i < labelsS.length; i++) {
-			array[i] = Integer.parseInt(labelsS[i].getText());
-		}
-		return array; 
+	public Array7 getHorizontalArray() {
+		return arr7s;
 	}
+	
 	
 	/**
 	 * Returns the vertical array
-	 * @return array 7 int array
+	 * @return arr7w Array7 object
 	 */
-	public int[] getVerticalArray() {
-		int[] array = new int[7];
-		for (int i = 0; i < labelsW.length; i++) {
-			array[i] = Integer.parseInt(labelsW[i].getText());
-		}
-		return array;
+	public Array7 getVerticalArray() {
+		return arr7w;
 	}
 	
 	
 	public void readRow() throws Exception {
 		int rowNbr = Integer.parseInt(tfRowNbr.getText());
 		arr7s = arr77.getRow(rowNbr);
-		setHorizontalArray(arr7s.getArray());
-//		int[] array;
-//		array = getRow(Integer.parseInt(tfRowNbr.getText()));
-//		setHorizontalArray(array);
+		setHorizontalArray(arr7s);
 	}
 	
 	public void writeRow() {
+		int rowNbr = Integer.parseInt(tfRowNbr.getText());
+		arr77.setRow(rowNbr, arr7s);
+		update();
+	}
+	
+	public void modifyRow() {
 		int[] array = new int[7];
+		Array7 arr = new Array7();
 		for(int i = 0; i < 7; i++) {
 			int c = Integer.parseInt(JOptionPane.showInputDialog("Tal " + (i+1) + " av 7 (Mindre än 10!)" ));
 			array[i] = c;
 		}
-		setHorizontalArray(array);
+		for(int i = 0; i < 7; i++) {
+//			arr.setElement(i, array[i]);
+			arr7s.setElement(i, array[i]);
+		}
+		setHorizontalArray(arr7s);
+		update();
 	}
+
 	
 	public void readCol() throws Exception {
 		int colNbr = Integer.parseInt(tfColNbr.getText());
 		arr7w = arr77.getCol(colNbr);
-		setVerticalArray(arr7w.getArray());
-//		int[] array;
-//		array = getCol(Integer.parseInt(tfColNbr.getText()));
-//		setVerticalArray(array);
+		setVerticalArray(arr7w);
 	}
 	
 	public void writeCol() {
-		int[] array;
-		int col;
-		array = getVerticalArray();
-		col = Integer.parseInt(tfRowNbr.getText());
-		TESetCol(array, col);
+		int colNbr = Integer.parseInt(tfRowNbr.getText());
+		arr77.setCol(colNbr, arr7w);
+		update();
 	}
 		
+	
+	public void modifyCol() {
+		int[] array = new int[7];
+		Array7 arr = new Array7();
+		for(int i = 0; i < 7; i++) {
+			int c = Integer.parseInt(JOptionPane.showInputDialog("Tal " + (i+1) + " av 7 (Mindre än 10!)" ));
+			array[i] = c;
+		}
+		for(int i = 0; i < 7; i++) {
+			arr7w.setElement(i, array[i]);
+		}
+		setVerticalArray(arr7w);
+	}
 	
 	
 	private class AL implements ActionListener {
@@ -278,6 +309,10 @@ public class TestEnvironment extends JPanel {
 				}
 			} else if (btnWriteCol == e.getSource()) {
 				writeCol();
+			} else if (btnModRow == e.getSource()) {
+				modifyRow();
+			} else if (btnModCol == e.getSource()) {
+				modifyCol();
 			}
 			
 		}
