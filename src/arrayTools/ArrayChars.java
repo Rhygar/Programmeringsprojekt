@@ -6,7 +6,7 @@ public class ArrayChars {
 
 	private Array7x7[] chars = new Array7x7[128];
 
-	public ArrayChars() throws Exception {
+	public ArrayChars() {
 		chars['A'] = new Array7x7(charA);
 		chars['B'] = new Array7x7(charB);
 		chars['C'] = new Array7x7(charC);

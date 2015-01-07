@@ -23,11 +23,13 @@ public class Array7x7 {
 	 * @throws Exception
 	 *             If array is wrong size.
 	*/ 
-	public Array7x7(int[][] array) throws Exception {
+	public Array7x7(int[][] array)
+//			throws Exception 
+	{
 		if (array.length == 7 && array[0].length == 7) {
 			this.array = array;
 		} else {
-			throw new Exception("Incorrect array size");
+//			throw new Exception("Incorrect array size");
 		}
 	}
 
