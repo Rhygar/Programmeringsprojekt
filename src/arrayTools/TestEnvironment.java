@@ -7,15 +7,14 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
- * <<<<<< CLASS UNDER CONSTRUCTION >>>>>>
- * Test environment to test different set and get methods using arrays 
- * @author David Tran
+ * Test environment to test different methods from classes Array7 and Array7x7
+ * @author David Tran 2015-01-07
  *
  */
 public class TestEnvironment extends JPanel {
 	
-	private Array7 arr7s;
-	private Array7 arr7w;
+	private Array7 arr7s = new Array7();
+	private Array7 arr7w = new Array7();
 	private Array7x7 arr77;
 
 	private JLabel[][] labels = new JLabel[7][7];		//Jlabel components for the 7x7 array. Goes in center
@@ -30,14 +29,37 @@ public class TestEnvironment extends JPanel {
 	private JTextField tfRowNbr = new JTextField("Input rad nr");
 	private JTextField tfColNbr = new JTextField("Input kol nr");
 	private Dimension block = new Dimension(40,40);		//size for all the JLabel components 
-	
 	private Font font = new Font( "SansSerif", Font.BOLD, 30 );
 	
-	
+	/**
+	 * Constructor with parameter in
+	 * @param arr77 Array7x7 object containing Integer values 
+	 */
 	public TestEnvironment(Array7x7 arr77) {
-		
 		this.arr77 = arr77;
-		
+		setupEnvironment();
+		init();
+	}
+
+	/**
+	 * Constuctor without parameter. 
+	 */
+	public TestEnvironment() {
+		this.arr77 = new Array7x7();
+		setupEnvironment();
+		init();
+	}
+	
+	/**
+	 * Initializing the values in testenvironment
+	 */
+	public void init() {
+		setVerticalArray();
+		setHorizontalArray();
+		set7x7ArrayInt(arr77.getArray());
+	}
+	
+	public void setupEnvironment() {
 		//main test window size
 		setPreferredSize(new Dimension(500,400));
 		//choosing borderlayout to have one in west, south, east and center
@@ -88,17 +110,18 @@ public class TestEnvironment extends JPanel {
 		JPanel center = new JPanel();
 		center.setLayout(new GridLayout(7,7, 5, 5));
 		center.setBorder(BorderFactory.createEmptyBorder(2,20,20,2));
-			for (int row = 0; row < labels.length; row++) {
-				for (int col = 0; col < labels[row].length; col++) {
-					labels[row][col] = new JLabel("");
-					labels[row][col].setPreferredSize(block);
-					labels[row][col].setBackground(Color.GRAY);
-					labels[row][col].setOpaque(true);
-					labels[row][col].setHorizontalAlignment(SwingConstants.CENTER);
-					labels[row][col].setFont(font);
-					center.add(labels[row][col]);
-				}
-			}		
+		for (int row = 0; row < labels.length; row++) {
+			for (int col = 0; col < labels[row].length; col++) {
+				labels[row][col] = new JLabel("");
+				labels[row][col].setPreferredSize(block);
+				labels[row][col].setBackground(Color.GRAY);
+				labels[row][col].setOpaque(true);
+				labels[row][col].setHorizontalAlignment(SwingConstants.CENTER);
+				labels[row][col].setFont(font);
+				center.add(labels[row][col]);
+			}
+		}		
+		
 		//adding components to the panel		
 		add(west, BorderLayout.WEST);
 		add(center, BorderLayout.CENTER);
@@ -123,94 +146,34 @@ public class TestEnvironment extends JPanel {
 			for(int j = 0; j < array[i].length; j++) {
 				String value = array[i][j] + "";
 				labels[i][j].setText(value);
-				if (labels[i][j].getText().equals("1")) {
-					labels[i][j].setBackground(Color.BLACK);
-				} else if (labels[i][j].getText().equals("0")) {
-					labels[i][j].setBackground(Color.RED);
-					labels[i][j].setForeground(Color.RED);
-				}
 			}
 		}
 	}	
 	
-	public void setArray7w(int[] array) {
-		for(int i = 0; i < 7; i++) {
-			labelsW[i].setText(array[i] + "");
-		}
-	}
-	
-	public void setArray7s(int[] array) {
-		for(int i = 0; i < 7; i++) {
-			labelsS[i].setText(array[i] + "");
-		}
-	}
-	
 	/**
-	 * Sets values in TestEnvironment from Array7x7 object.
-	 * @param arr Array7x7 object
+	 * Update the 7x7 array in testEnvironment
 	 */
 	public void update() {
 		set7x7ArrayInt(arr77.getArray());
-//		setArray7w(arr7w.getArray());
-//		setArray7s(arr7s.getArray());
+
 	}
 	
 	/**
-	 * Changing specified row in the TestEnvironment
-	 * @param array int[] array with 7 elements
-	 * @param row this row will be modified. Start from 0 
+	 * Changing the horizontal array with values from Array7 arr7s
 	 */
-	public void TESetRow(int[] array, int row) {
-		for(int col = 0; col < labels[row].length; col++) {
-			labels[row][col].setText(array[col] + "");
-		}
-	}
-	
-	/**
-	 * Changing specified column in the TestEnvironment
-	 * @param array int[] array with 7 elements
-	 * @param col this column will be modified. Start from 0
-	 */
-	public void TESetCol(int[] array, int col) {
-		for(int row = 0; row < labels.length; row++) {
-			labels[row][col].setText(array[row] + "");
-		}
-	}
-	
-	public int[] getRow(int row) {
-		int[] array = new int[7];
-		for(int col = 0; col < labels[row].length; col++) {
-			array[col] = Integer.parseInt(labels[row][col].getText());
-		}
-		return array;
-	}
-	
-	public int[] getCol(int col) {
-		int[] array = new int[7];
-		for(int row = 0; row < labels.length; row++) {
-			array[row] = Integer.parseInt(labels[row][col].getText());
-		}
-		return array;
-	}
-	
-	/**
-	 * Changing the horizontal array
-	 * @param arr Array7 object
-	 */
-	public void setHorizontalArray(Array7 arr) {
+	public void setHorizontalArray() {
 		for (int i = 0; i < 7; i++) {
-			String text = arr.getElement(i) + "";
+			String text = arr7s.getElement(i) + "";
 			labelsS[i].setText(text);
 		}
 	}
 	
 	/**
-	 * Changing the vertical array
-	 * @param arr Array7 object
+	 * Changing the vertical array with values from Array7 arr7w
 	 */
-	public void setVerticalArray(Array7 arr) {
+	public void setVerticalArray() {
 		for (int i = 0; i < 7; i++) {
-			String text = arr.getElement(i) + "";
+			String text = arr7w.getElement(i) + "";
 			labelsW[i].setText(text);
 		}
 	}
@@ -222,8 +185,7 @@ public class TestEnvironment extends JPanel {
 	public Array7 getHorizontalArray() {
 		return arr7s;
 	}
-	
-	
+		
 	/**
 	 * Returns the vertical array
 	 * @return arr7w Array7 object
@@ -232,61 +194,67 @@ public class TestEnvironment extends JPanel {
 		return arr7w;
 	}
 	
-	
+	/**
+	 * Sets the horizontal array from a specified row in the 7x7 array
+	 */
 	public void readRow() throws Exception {
+		//reading the row number from textfield
 		int rowNbr = Integer.parseInt(tfRowNbr.getText());
 		arr7s = arr77.getRow(rowNbr);
-		setHorizontalArray(arr7s);
+		setHorizontalArray();
 	}
 	
+	/**
+	 * Sets the vertical array from a specified column in the 7x7 array
+	 */
+	public void readCol() throws Exception {
+		//reading the col number from textfield
+		int colNbr = Integer.parseInt(tfColNbr.getText());
+		arr7w = arr77.getCol(colNbr);
+		setVerticalArray();
+	}
+	
+	/**
+	 * Copies the value from the horizontal array to a specified row in the 7x7 array 
+	 */
 	public void writeRow() {
+		//reading the row number from textfield
 		int rowNbr = Integer.parseInt(tfRowNbr.getText());
 		arr77.setRow(rowNbr, arr7s);
 		update();
 	}
 	
-	public void modifyRow() {
-		int[] array = new int[7];
-		Array7 arr = new Array7();
-		for(int i = 0; i < 7; i++) {
-			int c = Integer.parseInt(JOptionPane.showInputDialog("Tal " + (i+1) + " av 7 (Mindre än 10!)" ));
-			array[i] = c;
-		}
-		for(int i = 0; i < 7; i++) {
-//			arr.setElement(i, array[i]);
-			arr7s.setElement(i, array[i]);
-		}
-		setHorizontalArray(arr7s);
-		update();
-	}
-
-	
-	public void readCol() throws Exception {
-		int colNbr = Integer.parseInt(tfColNbr.getText());
-		arr7w = arr77.getCol(colNbr);
-		setVerticalArray(arr7w);
-	}
-	
+	/**
+	 * Copies the value from the vertical array to a specified col in the 7x7 array 
+	 */
 	public void writeCol() {
-		int colNbr = Integer.parseInt(tfRowNbr.getText());
+		//reading the col number from textfield
+		int colNbr = Integer.parseInt(tfColNbr.getText());
 		arr77.setCol(colNbr, arr7w);
 		update();
 	}
-		
 	
-	public void modifyCol() {
-		int[] array = new int[7];
-		Array7 arr = new Array7();
+	/**
+	 * Lets the user modify the horizontal array with input dialog
+	 */
+	public void modifyRow() {
 		for(int i = 0; i < 7; i++) {
 			int c = Integer.parseInt(JOptionPane.showInputDialog("Tal " + (i+1) + " av 7 (Mindre än 10!)" ));
-			array[i] = c;
+			arr7s.setElement(i, c);
 		}
-		for(int i = 0; i < 7; i++) {
-			arr7w.setElement(i, array[i]);
-		}
-		setVerticalArray(arr7w);
-	}
+		setHorizontalArray();
+	}		
 	
+	/**
+	 * Lets the user modify the vertical array with input dialog
+	 */
+	public void modifyCol() {
+		for(int i = 0; i < 7; i++) {
+			int c = Integer.parseInt(JOptionPane.showInputDialog("Tal " + (i+1) + " av 7 (Mindre än 10!)" ));
+			arr7w.setElement(i, c);
+		}
+		setVerticalArray();
+	}
 	
 	private class AL implements ActionListener {
 
@@ -319,32 +287,20 @@ public class TestEnvironment extends JPanel {
 	}
 	
 	public static void main (String[] args) throws Exception {
-//		ArrayChars chars = new ArrayChars();
-		
 		
 		int arr [][] ={{1,2,3,4,5,6,7},
-					{8,9,10,11,12,13,14},
-					{15,16,17,18,19,20,21},
-					{22,23,24,25,26,27,28},
-					{29,30,31,32,33,34,35},
-					{36,37,38,39,40,41,42},
-					{43,44,45,46,47,48,49}};
-		
-		int arr2 [] = {2,9,1,4,8,6,7};
-		
-		Array7 arr1 = new Array7 (arr2);
+				{8,9,10,11,12,13,14},
+				{15,16,17,18,19,20,21},
+				{22,23,24,25,26,27,28},
+				{29,30,31,32,33,34,35},
+				{36,37,38,39,40,41,42},
+				{43,44,45,46,47,48,49}};
+
 		Array7x7 arr7 = new Array7x7(arr);
 		
-		TestEnvironment run = new TestEnvironment(arr7);
-		
-//		arr7.setElement(0, 3, 3);
-//		arr7.setRow(1,arr1.getArray());
-		run.set7x7ArrayInt(arr7.getArray());
+		TestEnvironment run = new TestEnvironment();
 		JFrame frame = new JFrame("Test Arrays");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
-		run.update();
 		frame.add(run);
 		frame.pack();
 		frame.setVisible(true);
