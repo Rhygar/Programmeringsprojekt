@@ -26,22 +26,21 @@ public class TextFlow extends JPanel {
 	 */
 	public static void main(String[] args) throws Exception {
 
-		Array7x7[] txtArray;
-		
+		Array7x7[] txtArrays;
+		// An object with all possible characters
+		ArrayChars chars = new ArrayChars();
+
 		// An input window asking for a string
 		String txt = JOptionPane.showInputDialog("Ange en text, bara STORA bokstäver, siffror och tecken");
 
 		// An array of Array7x7 object to hold characters. 
 		// The size of the array must be at least 5. 
 		if (txt.length() < 4) {
-			txtArray = new Array7x7[5];
+			txtArrays = new Array7x7[5];
 		} else {
 			// The last position in array shall contain a space sign
-			txtArray = new Array7x7[txt.length() + 1];
+			txtArrays = new Array7x7[txt.length() + 1];
 		}
-		
-		// An object with all possible characters
-		ArrayChars[] chars = new ArrayChars[txtArray.length];
 		
 		// The display size and colors. (5*7) * 7 
 		ColorDisplay d = new ColorDisplay(1, displaySize, Color.RED, Color.CYAN);
@@ -50,22 +49,17 @@ public class TextFlow extends JPanel {
 		// If the string is less than 4 it will be filled with space up to the fifth position.
 		if (txt.length() < 4) {
 			for (int i = 0; i < txt.length(); i++) {
-				chars[i] = new ArrayChars();
-				txtArray[i] = chars[i].getChar(txt.charAt(i));
-				
+				txtArrays[i] = chars.getChar(txt.charAt(i));
 			}
-			for (int j = txt.length(); j < txtArray.length; j++) {
-				chars[j] = new ArrayChars();
-				txtArray[j] = chars[j].getChar(' ');
+			for (int j = txt.length(); j < txtArrays.length; j++) {
+				txtArrays[j] = chars.getChar(' ');
 			}
 		} else {
 			for (int i = 0; i < txt.length(); i++) {
-				chars[i] = new ArrayChars();
-				txtArray[i] = chars[i].getChar(txt.charAt(i));
+				txtArrays[i] = chars.getChar(txt.charAt(i));
 				// Last position will contain a space sign
-				if(i == txtArray.length - 2) {
-					chars[i+1] = new ArrayChars();
-					txtArray[i+1] = chars[i+1].getChar(' ');
+				if(i == txtArrays.length - 2) {
+					txtArrays[i+1] = chars.getChar(' ');
 					i++;
 				}
 			}
@@ -89,16 +83,16 @@ public class TextFlow extends JPanel {
 			public void run() {
 
 				// shifting the content to LEFT in all positions in Array7x7[].
-				for (int p = 0; p < txtArray.length; p++) {
+				for (int p = 0; p < txtArrays.length; p++) {
 					// Each blocks last column will receive the next
 					// blocks first column, unless it's the last block.
 					// That one will receive the first blocks first column.
-					if (p == txtArray.length - 1) {
-						arr = txtArray[0].getCol(0);
+					if (p == txtArrays.length - 1) {
+						arr = txtArrays[0].getCol(0);
 					} else {
-						arr = txtArray[p + 1].getCol(0);
+						arr = txtArrays[p + 1].getCol(0);
 					}
-					txtArray[p].shiftContent(arr, 1);
+					txtArrays[p].shiftContent(arr, 1);
 				}
 
 				// the display is 5 blocks long. All elements containing value 1
@@ -106,20 +100,20 @@ public class TextFlow extends JPanel {
 				for (int i = 0; i < displaySize; i++) {
 					for (int row = 0; row < 7; row++) {
 						for (int col = 0; col < 7; col++) {
-							if (txtArray[i].getElement(row, col) == 1) {
-								txtArray[i].setElement(row, col, Color.BLACK);
+							if (txtArrays[i].getElement(row, col) == 1) {
+								txtArrays[i].setElement(row, col, Color.BLACK);
 							}
 						}
 					}
 					// sets up the display to show the new block.
-					d.setDisplay(txtArray[i].getArray(), 0, i);
+					d.setDisplay(txtArrays[i].getArray(), 0, i);
 				}
 				// shows the new display
 				d.updateDisplay();
 
 			}
 			// Initial delay and period in milliseconds
-		}, 100, 100);
+		}, 200, 200);
 	}
 
 }
