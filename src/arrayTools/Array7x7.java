@@ -6,7 +6,7 @@ package arrayTools;
 public class Array7x7 {
 	public static final int LEFT = 1;
 	public static final int RIGHT = 2;
-	private int[][] array;
+	private int[][] array = new int[7][7];
 
 	/**
 	 * Creates an object with an empty array
@@ -23,13 +23,11 @@ public class Array7x7 {
 	 * @throws Exception
 	 *             If array is wrong size.
 	*/ 
-	public Array7x7(int[][] array)
-//			throws Exception 
-	{
-		if (array.length == 7 && array[0].length == 7) {
-			this.array = array;
-		} else {
-//			throw new Exception("Incorrect array size");
+	public Array7x7(int[][] array) {
+		for(int row = 0; row < 7; row++) {
+			for(int col = 0; col < 7; col++) {
+				this.setElement(row, col, array[row][col]);
+			}
 		}
 	}
 
@@ -78,10 +76,8 @@ public class Array7x7 {
 	 * @param row
 	 *            Which row to return
 	 * @return An Array7 object with the values
-	 * @throws Exception
-	 *             ???
 	 */
-	public Array7 getRow(int row) throws Exception {
+	public Array7 getRow(int row) {
 		return new Array7(array[row]);
 	}
 
@@ -107,12 +103,8 @@ public class Array7x7 {
 	 * @param col
 	 *            Which column to return
 	 * @return An Array7 object with the values
-	 * @throws Exception
-	 *             ???
 	 */
-	public Array7 getCol(int col)
-//			throws Exception 
-	{
+	public Array7 getCol(int col) {
 		int[] array = new int[7];
 
 		for (int i = 0; i < 7; i++) {
@@ -140,12 +132,8 @@ public class Array7x7 {
 	 * @param direction
 	 *            Constant from the class, either RIGHT, or LEFT
 	 * @return The "lost" column as an Array7 object
-	 * @throws Exception
-	 *             ???
 	 */
-	public Array7 shiftContent(Array7 colReplace, int direction)
-//			throws Exception 
-	{
+	public Array7 shiftContent(Array7 colReplace, int direction) {
 		Array7 array = null;
 
 		if (direction == LEFT) {
@@ -171,7 +159,6 @@ public class Array7x7 {
 			// Inserts provided column to the far left
 			setCol(0, colReplace);
 		}
-
 		return array;
 	}	
 }
