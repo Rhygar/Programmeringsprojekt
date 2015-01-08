@@ -154,8 +154,12 @@ public class TestEnvironment extends JPanel {
 	 * Update the 7x7 array in testEnvironment
 	 */
 	public void update() {
-		set7x7ArrayInt(arr77.getArray());
-
+		for(int row = 0; row < 7; row++) {
+			for(int col= 0; col < 7; col++) {
+				String text = arr77.getElement(row,col) + "";
+				labels[row][col].setText(text);
+			}
+		}
 	}
 	
 	/**
