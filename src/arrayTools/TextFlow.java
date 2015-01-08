@@ -20,6 +20,7 @@ public class TextFlow extends JPanel {
 	/**
 	 * run the necessary methods to start program
 	 */
+
 	public void run() {
 		setString();
 		showDisplay();
@@ -34,7 +35,7 @@ public class TextFlow extends JPanel {
 	 */
 	public void setString() {
 		// An input window asking for a string
-		String txt = JOptionPane.showInputDialog("Ange en text, bara STORA bokstäver, siffror och tecken");
+		String txt = JOptionPane.showInputDialog("Ange en text med bokstäver, siffror och tecken");
 
 		// An array of Array7x7 object to hold characters.
 		// The size of the array must be at least 5.
@@ -44,6 +45,12 @@ public class TextFlow extends JPanel {
 			// The last position in array shall contain a space sign
 			txtArray = new Array7x7[txt.length() + 1];
 		}
+
+		
+		// The display size and colors. (5*7) * 7 
+		final ColorDisplay d = new ColorDisplay(1, displaySize, Color.RED, Color.WHITE);
+
+
 		// Inserts the graphical counterpart for each character
 		// If the string is less than 4 it will be filled with space up to the
 		// fifth position.
@@ -125,7 +132,7 @@ public class TextFlow extends JPanel {
 		}, 0, 200);
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 		TextFlow prog = new TextFlow();
 		prog.run();
 	}

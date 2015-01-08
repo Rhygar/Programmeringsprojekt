@@ -1,11 +1,10 @@
 package arrayTools;
 
-import javax.swing.JFrame;
 
 public class ArrayChars {
 
 	private Array7x7[] chars = new Array7x7[128];
-
+	private Array7x7 unknown = new Array7x7(UNKNOWN1);
 	public ArrayChars() {
 		chars['A'] = new Array7x7(charA);
 		chars['B'] = new Array7x7(charB);
@@ -68,7 +67,7 @@ public class ArrayChars {
 		chars[127] = new Array7x7(UNKNOWN1);
 	}
 
-	private final int[][] charA = {
+	private static int[][] charA = {
 		{ 0, 0, 1, 1, 1, 0, 0 },
 		{ 0, 1, 0, 0, 0, 1, 0 },
 		{ 0, 1, 0, 0, 0, 1, 0 },
@@ -601,27 +600,25 @@ public class ArrayChars {
 
 
 
-
+	
 	
 	public Array7x7 getChar(char chr){
-		if(chr >= 0 && chr<=127){
-			return chars[chr];
-		}else
-			return chars[127];
-	}
-
-    public static void main(String[] args) throws Exception {
-    	ArrayChars chars = new ArrayChars();
-    	TestEnvironment testEnv = new TestEnvironment(chars.getChar('0'));
-    	testEnv.update();
-    	JFrame frame = new JFrame("Test Arrays");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(testEnv);
-		frame.pack();
-		frame.setVisible(true);
 		
-		
-    }
-
+		if(chr >= 0 && chr <= 127){
+			if(chr >= 97 && chr <= 122){
+				return chars[chr-32];
+			}else if(chr == 35 || chr == 36 ||
+					 chr == 39 || chr == 47 ||
+					 chr == 60 || chr == 62 ||
+					 chr == 92 || chr == 94 ||
+					 chr == 124 || chr == 126 ) {
+				return unknown;
+				
+			}else
+				return chars[chr];
+		} else
+			return unknown;
+	} 
+	
 }
 
