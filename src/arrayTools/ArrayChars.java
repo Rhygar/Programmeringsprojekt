@@ -3,8 +3,7 @@ package arrayTools;
 
 public class ArrayChars {
 
-	private Array7x7[] chars = new Array7x7[128];
-	private Array7x7 unknown = new Array7x7(UNKNOWN1);
+	private static Array7x7[] chars = new Array7x7[128];
 	
 	public ArrayChars() {
 		chars['A'] = new Array7x7(charA);
@@ -600,10 +599,7 @@ public class ArrayChars {
 		{ 0, 1, 1, 1, 1, 1, 0 } };
 
 
-
-	
-	
-	public Array7x7 getChar(char chr){
+	public static Array7x7 getChar(char chr){
 		
 		if(chr >= 0 && chr <= 127){
 			if(chr >= 97 && chr <= 122){
@@ -613,12 +609,12 @@ public class ArrayChars {
 					 chr == 60 || chr == 62 ||
 					 chr == 92 || chr == 94 ||
 					 chr == 124 || chr == 126 ) {
-				return unknown;
+				return new Array7x7(UNKNOWN1);
 				
 			}else
 				return chars[chr];
 		} else
-			return unknown;
+			return new Array7x7(UNKNOWN1);
 	} 
 	
 }

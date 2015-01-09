@@ -46,28 +46,22 @@ public class TextFlow extends JPanel {
 			txtArray = new Array7x7[txt.length() + 1];
 		}
 
-		
-		// The display size and colors. (5*7) * 7 
-		final ColorDisplay d = new ColorDisplay(1, displaySize, Color.RED, Color.WHITE);
-
-
 		// Inserts the graphical counterpart for each character
 		// If the string is less than 4 it will be filled with space up to the
 		// fifth position.
 		if (txt.length() < 4) {
 			for (int i = 0; i < txt.length(); i++) {
-				txtArray[i] = new Array7x7(chars.getChar(txt.charAt(i))
-						.getArray());
+				txtArray[i] = new Array7x7(ArrayChars.getChar(txt.charAt(i)).getArray());
 			}
 			for (int j = txt.length(); j < txtArray.length; j++) {
-				txtArray[j] = new Array7x7(chars.getChar(' ').getArray());
+				txtArray[j] = new Array7x7(ArrayChars.getChar(' ').getArray());
 			}
 		} else {
 			for (int i = 0; i < txtArray.length; i++) {
-				txtArray[i] = new Array7x7(chars.getChar(txt.charAt(i)).getArray());
+				txtArray[i] = new Array7x7(ArrayChars.getChar(txt.charAt(i)).getArray());
 				// Last position will contain a space sign
 				if (i == txtArray.length - 2) {
-					txtArray[i + 1] = new Array7x7(chars.getChar(' ').getArray());
+					txtArray[i + 1] = new Array7x7(ArrayChars.getChar(' ').getArray());
 					i++;
 				}
 			}
@@ -129,7 +123,7 @@ public class TextFlow extends JPanel {
 				d.updateDisplay();
 			}
 			// Initial delay and period in milliseconds
-		}, 0, 200);
+		}, 0, 100);
 	}
 
 	public static void main(String[] args) {
