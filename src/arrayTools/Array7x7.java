@@ -16,12 +16,9 @@ public class Array7x7 {
 	}
 
 	/** 
-	 * Creates an object with provided array
+	 * Copies the provided array's elements to this array
 	 * 
-	 * @param array
-	 *            Array to be used. Has to be 7*7.
-	 * @throws Exception
-	 *             If array is wrong size.
+	 * @param array Array to be used. Has to be 7*7.
 	*/ 
 	public Array7x7(int[][] array) {
 		for(int row = 0; row < 7; row++) {
@@ -34,12 +31,9 @@ public class Array7x7 {
 	/**
 	 * Sets a value in specified row and column
 	 * 
-	 * @param row
-	 *            Which row the element is
-	 * @param col
-	 *            Which column the element is
-	 * @param value
-	 *            The value to be inserted
+	 * @param row Which row the element is
+	 * @param col Which column the element is
+	 * @param value The value to be inserted
 	 */
 	public void setElement(int row, int col, int value) {
 		array[row][col] = value;
@@ -48,10 +42,8 @@ public class Array7x7 {
 	/**
 	 * Returns the value in specified element
 	 * 
-	 * @param row
-	 *            Row where element exists
-	 * @param col
-	 *            Column where element exists
+	 * @param row Row where element exists
+	 * @param col Column where element exists
 	 * @return The value in specified element
 	 */
 	public int getElement(int row, int col) {
@@ -61,10 +53,8 @@ public class Array7x7 {
 	/**
 	 * Sets specified row with values given in the passed Array7 object
 	 * 
-	 * @param row
-	 *            Which row to manipulate
-	 * @param theRow
-	 *            An Array7 object with the values
+	 * @param row Which row to manipulate
+	 * @param theRow An Array7 object with the values
 	 */
 	public void setRow(int row, Array7 theRow) {
 		array[row] = theRow.getArray();
@@ -73,8 +63,7 @@ public class Array7x7 {
 	/**
 	 * Returns a specified row of values in an Array7 object
 	 * 
-	 * @param row
-	 *            Which row to return
+	 * @param row Which row to return
 	 * @return An Array7 object with the values
 	 */
 	public Array7 getRow(int row) {
@@ -84,10 +73,8 @@ public class Array7x7 {
 	/**
 	 * Sets specified column with values given in the passed Array7 object
 	 * 
-	 * @param col
-	 *            Which column to manipulate
-	 * @param theCol
-	 *            An Array7 object with the values
+	 * @param col Which column to manipulate
+	 * @param theCol An Array7 object with the values
 	 */
 	public void setCol(int col, Array7 theCol) {
 		int[] array = theCol.getArray();
@@ -100,8 +87,7 @@ public class Array7x7 {
 	/**
 	 * Returns a specified column of values in an Array7 object
 	 * 
-	 * @param col
-	 *            Which column to return
+	 * @param col Which column to return
 	 * @return An Array7 object with the values
 	 */
 	public Array7 getCol(int col) {
@@ -127,10 +113,8 @@ public class Array7x7 {
 	 * Shifts the array one column in chosen direction and inserts provided
 	 * Array7 in "empty" column. Returns the column that is "pushed" out.
 	 * 
-	 * @param colReplace
-	 *            The column that should be injected from the right
-	 * @param direction
-	 *            Constant from the class, either RIGHT, or LEFT
+	 * @param colReplace The column that should be injected from the right
+	 * @param direction Constant from the class, either RIGHT, or LEFT
 	 * @return The "lost" column as an Array7 object
 	 */
 	public Array7 shiftContent(Array7 colReplace, int direction) {

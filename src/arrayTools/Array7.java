@@ -5,7 +5,7 @@ package arrayTools;
  * an integer array the length of 7 
  */
 public class Array7 {
-	private int[] array;
+	private int[] array = new int[7];
 
 	/**
 	 * Creates an object with an empty array
@@ -19,7 +19,9 @@ public class Array7 {
 	 * @param array Array to be used. Has to be 7 long.
 	 */
 	public Array7(int[] array){
-		this.array = array.clone();		
+		for(int i = 0; i < 7; i++) {
+			this.setElement(i, array[i]);
+		}
 	}
 	
 	/**

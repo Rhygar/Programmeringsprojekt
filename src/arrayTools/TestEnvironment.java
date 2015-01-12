@@ -86,7 +86,7 @@ public class TestEnvironment extends JPanel {
 		south.setBorder(BorderFactory.createEmptyBorder(20,100,5,92));
 		for (int i = 0; i < labelsS.length; i++) {
 			labelsS[i] = new JLabel("");
-			labelsS[i].setBackground(Color.BLUE);
+			labelsS[i].setBackground(Color.orange);
 			labelsS[i].setOpaque(true);
 			labelsS[i].setHorizontalAlignment(SwingConstants.CENTER);
 			labelsS[i].setFont(font);
